@@ -1,0 +1,82 @@
+<app-navbar />
+
+<app-page-banner />
+
+<!-- Login -->
+<div class="login-area bg-fbfbfb ptb-120">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+        <div class="login-image text-center">
+          <img src="images/log.jpg" alt="login-image" />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 order-1 order-lg-2">
+        <div class="login-content">
+          <ul class="links p-0 list-unstyled">
+            <li class="d-inline-block">
+              <a class="d-block position-relative active">Se connecter</a>
+            </li>
+            <!-- <li class="d-inline-block">
+              <a routerLink="/register" class="d-block position-relative">S'inscrire</a>
+            </li> -->
+          </ul>
+          <h3 class="fw-medium">Connectez-vous à votre compte</h3>
+
+          <form [formGroup]="authForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control shadow-none"
+                placeholder="Email"
+                formControlName="email"
+              />
+              @if(authForm.get('email')?.touched && authForm.get('email')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                Email invalide.
+              </div>
+            }
+            </div>
+
+            <div class="form-group position-relative">
+              <input
+               
+                id="passwordInput"
+                type="password"
+                class="form-control shadow-none"
+                placeholder="Mot de passe"
+                formControlName="password"
+              />
+               @if(authForm.get('password')?.touched && authForm.get('password')?.invalid){
+              <div
+                class="text-danger small mt-1 err"
+              >
+                Mot de passe invalide (min 8 caractères, 1 lettre, 1 chiffre, 1 spécial).
+              </div>
+            }
+            </div>
+
+            <a routerLink="/forget-password" class="forgot-password">Mot de passe oublié ?</a>
+
+            <button type="submit" class="default-btn d-block w-100" [disabled]="authForm.invalid">
+              Se connecter
+            </button>
+
+<p>
+  Si vous n’avez pas de compte, 
+  <a routerLink="/contact" class="text-center mt-3 register-link">cliquez ici pour en créer un</a>
+</p>          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Login -->
+
+
+
+<app-back-to-top />

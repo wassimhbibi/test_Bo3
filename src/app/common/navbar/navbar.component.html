@@ -1,0 +1,312 @@
+
+@if(!userRole){
+<div
+    class="navbar-area position-fixed top-0 start-0 end-0"
+    [ngClass]="{'is-sticky': isSticky, 'white-navbar': router.url === '/index-3'}"
+>
+    <div class="lanklub-nav">
+        <div class="container">
+            <nav
+                class="navbar navbar-expand-lg bg-light"
+                [class.active]="classApplied"
+            >
+                <a
+                    [ngClass]="{'d-none': router.url === '/index-3'}"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+                <a
+                    *ngIf="router.url === '/index-3'"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/white-logo.svg" alt="logo">
+                </a>
+                <button
+                    class="navbar-toggler rounded-0 p-0 border-0 shadow-none"
+                    (click)="toggleClass()"
+                    type="button"
+                >
+                    <span class="burger-menu">
+                        <span class="top-bar d-block"></span>
+                        <span class="middle-bar d-block"></span>
+                        <span class="bottom-bar d-block"></span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto" style="transform:translateX( 140%);">
+                        <li class="nav-item">
+                          Déjà inscrit ?
+                    
+                        </li>
+
+                        
+                    </ul>
+                    <div class="others-option" style="transform:translateX( -40%);">
+                        <a routerLink="/login" class="default-btn">
+                          Se connecter
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+}
+
+
+
+@if(userRole==='admin'){
+<div
+    class="navbar-area position-fixed top-0 start-0 end-0"
+    [ngClass]="{'is-sticky': isSticky, 'white-navbar': router.url === '/index-3'}"
+>
+    <div class="lanklub-nav">
+        <div class="container">
+            <nav
+                class="navbar navbar-expand-lg bg-light"
+                [class.active]="classApplied"
+            >
+                <a
+                    [ngClass]="{'d-none': router.url === '/index-3'}"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+                <a
+                    *ngIf="router.url === '/index-3'"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/white-logo.svg" alt="logo">
+                </a>
+                <button
+                    class="navbar-toggler rounded-0 p-0 border-0 shadow-none"
+                    (click)="toggleClass()"
+                    type="button"
+                >
+                    <span class="burger-menu">
+                        <span class="top-bar d-block"></span>
+                        <span class="middle-bar d-block"></span>
+                        <span class="bottom-bar d-block"></span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="dropdown-toggle nav-link active">
+                                Expert
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a routerLink="/add-expert" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Ajouter expert
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a routerLink="/expert-list" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Modifier expert
+                                    </a>
+                                </li>
+                              
+                            </ul>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="dropdown-toggle nav-link">
+                                Chercheurs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a routerLink="/ajouter-chercheur" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Ajouter chercheur
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a routerLink="/chercheur-list" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Modifier chercheur
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="dropdown-toggle nav-link">
+                                Brevets
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a routerLink="/ajouter-brevet" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Ajouter brevet
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a routerLink="/brevet-list" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Modifier brevet
+                                    </a>
+                                </li>
+                               
+                                    </ul>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a routerLink="/login" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Login
+                                    </a>
+                                </li> -->
+                            
+                            
+                     
+                    </ul>
+                    <div class="others-option">
+                        <a  (click)="logout()" class="default-btn">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+}
+
+
+
+@if(userRole==='company'){
+
+<div
+    class="navbar-area position-fixed top-0 start-0 end-0"
+    [ngClass]="{'is-sticky': isSticky, 'white-navbar': router.url === '/index-3'}"
+>
+    <div class="lanklub-nav">
+        <div class="container">
+            <nav
+                class="navbar navbar-expand-lg bg-light"
+                [class.active]="classApplied"
+            >
+                <a
+                    [ngClass]="{'d-none': router.url === '/index-3'}"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+                <a
+                    *ngIf="router.url === '/index-3'"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/white-logo.svg" alt="logo">
+                </a>
+                <button
+                    class="navbar-toggler rounded-0 p-0 border-0 shadow-none"
+                    (click)="toggleClass()"
+                    type="button"
+                >
+                    <span class="burger-menu">
+                        <span class="top-bar d-block"></span>
+                        <span class="middle-bar d-block"></span>
+                        <span class="bottom-bar d-block"></span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a routerLink="/match-expert" class="nav-link active">
+                                Trouver un  expert
+                            </a>
+                         
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a routerLink="/match-chercheur" class="nav-link">
+                                Trouver un  chercheur
+                            </a>
+                           
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/brevet" class="nav-link">
+                               Trouver un  Brevet
+                            </a>
+                          
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a routerLink="/login" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                        Login
+                                    </a>
+                                </li> -->
+                            
+                            
+                     
+                    </ul>
+                    <div class="others-option">
+                        <a  (click)="logout()" class="default-btn">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+}
+
+
+
+@if(userRole==='expert'){
+<div 
+    class="navbar-area position-fixed top-0 start-0 end-0"
+    [ngClass]="{'is-sticky': isSticky, 'white-navbar': router.url === '/index-3'}"
+>
+    <div class="lanklub-nav">
+        <div class="container">
+            <nav
+                class="navbar navbar-expand-lg bg-light"
+                [class.active]="classApplied"
+            >
+                <a
+                    [ngClass]="{'d-none': router.url === '/index-3'}"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+                <a
+                    *ngIf="router.url === '/index-3'"
+                    class="navbar-brand"
+                    routerLink="/"
+                >
+                    <img src="images/white-logo.svg" alt="logo">
+                </a>
+                <button
+                    class="navbar-toggler rounded-0 p-0 border-0 shadow-none"
+                    (click)="toggleClass()"
+                    type="button"
+                >
+                    <span class="burger-menu">
+                        <span class="top-bar d-block"></span>
+                        <span class="middle-bar d-block"></span>
+                        <span class="bottom-bar d-block"></span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto" style="transform:translateX( 140%);">
+                        <li class="nav-item">
+                          Déjà inscrit ?
+                    
+                        </li>
+                    </ul>
+                    <div class="others-option" style="transform:translateX( -40%);">
+                        <a routerLink="/login" class="default-btn">
+                          Se connecter expert
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+}

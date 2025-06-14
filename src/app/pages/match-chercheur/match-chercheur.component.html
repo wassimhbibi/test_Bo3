@@ -1,0 +1,269 @@
+<app-navbar />
+
+<app-page-banner />
+
+
+<!-- Default -->
+<div
+    class="feedback-area ptb-120 position-relative z-1"
+    [ngClass]="{'d-none': router.url === '/index-3'}"
+>
+    <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+
+  @if(step===1){
+
+      <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+              Quels sont les fonction souhaités ?
+            </h4>
+        </div>
+       
+
+                <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="fonction_" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner fonction'"
+              [settings]="dropdownSignleSettings"
+              [data]="fonction"
+              (onSelect)="onItemSelect1($event)"
+              (onDeSelect)="onItemDeSelect1($event)"
+              (onSelectAll)="onSelectAll1($event)"
+              (onDeSelectAll)="onDeSelectAll1()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+    </div>
+}
+
+
+ @if(step===2){
+     <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+                    Veuillez indiquer les specialité recherchées          </h4>
+        </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="specialite_" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner les specialité'"
+              [settings]="dropdownSettings"
+              [data]="specialite"
+              (onSelect)="onItemSelect2($event)"
+              (onDeSelect)="onItemDeSelect2($event)"
+              (onSelectAll)="onSelectAll2($event)"
+              (onDeSelectAll)="onDeSelectAll2()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+</div>
+ }
+
+
+  @if(step===3){
+ <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+Veuillez indiquer la ou les Mots clés principales</h4>
+        </div>
+
+             <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="Mots_cles_" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner les Mots clés'"
+              [settings]="dropdownSettings"
+              [data]="Mots_cles"
+              (onSelect)="onItemSelect3($event)"
+              (onDeSelect)="onItemDeSelect3($event)"
+              (onSelectAll)="onSelectAll3($event)"
+              (onDeSelectAll)="onDeSelectAll3()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          </div>
+        }
+
+
+         @if(step===4){
+ <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+Veuillez indiquer la ou les Compétences principales</h4>
+        </div>
+
+             <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="Competences_" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner les Compétences'"
+              [settings]="dropdownSettings"
+              [data]="Competences"
+              (onSelect)="onItemSelect3($event)"
+              (onDeSelect)="onItemDeSelect3($event)"
+              (onSelectAll)="onSelectAll3($event)"
+              (onDeSelectAll)="onDeSelectAll3()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          </div>
+        }
+
+
+           @if(step===5){
+ <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+Veuillez indiquer la ou les Expertises principales</h4>
+        </div>
+
+             <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="Expertises_" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner les Expertises'"
+              [settings]="dropdownSettings"
+              [data]="Expertises"
+              (onSelect)="onItemSelect3($event)"
+              (onDeSelect)="onItemDeSelect3($event)"
+              (onSelectAll)="onSelectAll3($event)"
+              (onDeSelectAll)="onDeSelectAll3()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          </div>
+        }
+
+
+
+
+
+
+<!-- Loader -->
+<div *ngIf="loading" class="d-flex justify-content-center my-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Chargement...</span>
+  </div>
+</div>
+
+  @if(step===6){
+
+<div *ngIf="!loading"> 
+  <div class="section-title text-center mb-5">
+    <h4 class="fw-semibold mx-auto mb-0 text-uppercase">Top 3 Chercheur les plus compatibles</h4>
+  </div>
+
+  <div class="row justify-content-center">
+ @for(Chercheur of topChercheur ; track Chercheur){
+    <div class="col-xl-4 col-md-6">
+     
+      <div class="card shadow-sm p-4 border rounded-4 position-relative bg-light">
+
+        <!-- Expert Header -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+<h5 class="card-title fw-bold text-primary mb-0">{{ Chercheur['Nom_prenom'] }}</h5>
+          <span class="badge bg-success fs-6 px-3 py-2 rounded-pill">Score: {{ Chercheur.Score | number:'1.2-2' }}/1</span>
+        </div>
+
+        <!-- Info List -->
+        <ul class="list-unstyled mb-4">
+          <li class="mb-2">
+            <i class="fa-solid fa-phone me-2 text-secondary"></i>
+            <strong>Téléphone:</strong> {{ Chercheur['telephone'] }}
+          </li>
+
+          <li class="mb-2">
+            <i class="fa-solid fa-envelope me-2 text-secondary"></i>
+            <strong>Email:</strong> {{Chercheur.Mail}}
+          </li>
+
+          <li class="mb-2">
+            <i class="fa-solid fa-briefcase me-2 text-secondary"></i>
+            <strong>Fonction:</strong> {{Chercheur['fonction']}}
+          </li>
+
+          <li class="mb-2">
+            <i class="fa-solid fa-graduation-cap me-2 text-secondary"></i>
+            <strong>Specialité:</strong> {{Chercheur.specialite}}
+          </li>
+
+          <li class="mb-2">
+            <i class="fa-solid fa-user-graduate me-2 text-secondary"></i>
+            <strong>Titre d'habilitation universitaire:</strong> {{Chercheur.titre_dhabilitation_universitaire}}
+          </li>
+
+          <li class="mb-2">
+            <i class="fa-solid fa-book me-2 text-secondary"></i>
+            <strong>Titre de these:</strong> {{Chercheur.Titre_de_these}}
+          </li>
+
+           <li class="mb-2">
+            <i class="fa-solid fa-brain me-2 text-secondary"></i>
+            <strong>Competences:</strong> {{Chercheur.Competences}}
+          </li>
+
+           <li class="mb-2">
+            <i class="fa-solid fa-chalkboard-user me-2 text-secondary"></i>
+            <strong>Expertise:</strong> {{Chercheur.Expertise}}
+          </li>
+
+           <li class="mb-2">
+            <i class="fa-solid fa-microscope me-2 text-secondary"></i>
+            <strong>Laboratoire de recherche:</strong> {{Chercheur.Laboratoire_de_recherche}}
+          </li>
+        </ul>
+
+        <!-- Footer -->
+          <div class="text-end">
+          <a [href]="service.APIUrl + '/chercheur/cv/' + Chercheur.cv" target="_blank" class="btn btn-primary btn-sm px-4">
+            <i class="fa-solid fa-arrow-right me-1"></i> View CV
+          </a>
+
+          <a  class="btn btn-success  btn-sm px-4">
+            <i class="fa-solid fa-arrow-right me-1"></i> Envoyer le contrat
+          </a>
+        </div>
+
+      </div>
+      
+    </div>
+}
+  </div>
+</div>
+ }
+
+
+
+ <div style='display: flex; align-items: center; justify-content: space-evenly; margin-top: 50px;'>
+ 
+  @if(step>1){
+    <a class="default-btn" (click)="back()">Retour</a>
+    }
+     @if(step<5){
+  <a  class="default-btn" (click)="next()" >Suivant</a>
+  }
+  @if(step===5){
+    <a  class="default-btn" (click)="getFullData()">Submit</a>
+  }
+</div>
+       
+        </div>
+    </div>
+ 
+
+

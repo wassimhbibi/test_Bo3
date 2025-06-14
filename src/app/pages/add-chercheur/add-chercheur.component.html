@@ -1,0 +1,213 @@
+<app-navbar />
+
+<app-page-banner />
+
+<div class="pb-120 border-bottom"></div>
+
+<!-- Course Details -->
+<div class="course-details-area bg-f3f3f3 ptb-120">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12">
+        <div class="course-details-sidebar">
+          <div class="course-list">
+            <h3 class="fw-semibold">Chercheur</h3>
+            <ul class="p-0 m-0 list-unstyled">
+              <li>
+                <a  class="fw-medium active d-block">
+                  Ajouter un chercheur 
+                
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <div class="course-details-desc">
+          <!-- Expert Form -->
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h4 class="mb-4 fw-bold text-primary">Ajouter un chercheur</h4>
+            <form [formGroup]="authForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Nom et prénom de chercheur</label>
+                  <input type="text" formControlName="Nom_prenom" class="form-control custom-input" placeholder="Entrez le nom complet" />
+                          @if(authForm.get('Nom_prenom')?.touched && authForm.get('Nom_prenom')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Fonction</label>
+                  <input type="text" formControlName="fonction" class="form-control custom-input" placeholder="Entrez le domaine" />
+                     @if(authForm.get('fonction')?.touched && authForm.get('fonction')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">specialité</label>
+                  <input type="text" formControlName="specialite" class="form-control custom-input" placeholder="Nombre d'années" />
+                     @if(authForm.get('specialite')?.touched && authForm.get('specialite')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Téléphone</label>
+                  <input type="tel" formControlName="telephone" class="form-control custom-input" placeholder="Entrez le téléphone" />
+                     @if(authForm.get('telephone')?.touched && authForm.get('telephone')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" formControlName="Mail" class="form-control custom-input" placeholder="Entrez l’email" />
+                    @if(authForm.get('Mail')?.touched && authForm.get('Mail')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Mots clés</label>
+                  <textarea type="text" formControlName="Mots_cles" class="form-control custom-input" placeholder="Ex: qualité,analyse, Equipement, etc."></textarea>
+                   @if(authForm.get('Mots_cles')?.touched && authForm.get('Mots_cles')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Titre d'habilitation universitaire</label>
+                  <input type="text" formControlName="titre_dhabilitation_universitaire" class="form-control custom-input" placeholder="Entrez la formation" />
+                   @if(authForm.get('titre_dhabilitation_universitaire')?.touched && authForm.get('titre_dhabilitation_universitaire')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                   <div class="col-12">
+                  <label class="form-label">Titre de thése</label>
+                  <input type="text" formControlName="Titre_de_these" class="form-control custom-input" placeholder="Entrez la formation" />
+                   @if(authForm.get('Titre_de_these')?.touched && authForm.get('Titre_de_these')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                        <div class="col-12">
+                  <label class="form-label">Compétences</label>
+                  <textarea type="text" formControlName="Competences" class="form-control custom-input"  placeholder="Ex: sol-gel , état solide , coprécipitation, etc."></textarea>
+                   @if(authForm.get('Competences')?.touched && authForm.get('Competences')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+
+                      <div class="col-12">
+                  <label class="form-label">Expértise</label>
+                  <textarea type="text" formControlName="Expertise" class="form-control custom-input" placeholder="Ex: chimie des colles adhésifs ,biotechnologie industrielle, etc."></textarea>
+                   @if(authForm.get('Expertise')?.touched && authForm.get('Expertise')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                  <div class="col-12">
+                  <label class="form-label">Laboratoire de recherche</label>
+                  <input type="text" formControlName="Laboratoire_de_recherche" class="form-control custom-input"  />
+                   @if(authForm.get('Laboratoire_de_recherche')?.touched && authForm.get('Laboratoire_de_recherche')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                    <div class="col-12">
+                  <label class="form-label">Upload CV</label>
+                  <input type="file" formControlName="cv" class="form-control custom-input" (change)="onFileSelected($event)">
+                  @if(authForm.get('cv')?.value){
+                  <div class="mt-2">
+ <a [href]="service.APIUrl + '/chercheur/cv/' + authForm.get('cv')?.value" target="_blank" style="cursor: pointer; color:#586CEC ; font-weight: 600;">
+
+View CV</a>
+</div>
+}
+                   @if(authForm.get('cv')?.touched && authForm.get('cv')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-12">
+<button type="submit" class="submit-btn" (click)="chercheur?.id ? update() : addChercheur()" [disabled]="authForm.invalid">Ajouter</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <!-- End Expert Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Course Details -->
+
+<app-back-to-top />

@@ -1,0 +1,213 @@
+<!-- Default -->
+<div
+    class="feedback-area ptb-120 position-relative z-1"
+    [ngClass]="{'d-none': router.url === '/index-3'}"
+>
+    <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+
+  @if(step===1){
+
+      <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+              Quels sont les domaines d'expertise souhaités ?
+            </h4>
+        </div>
+       
+
+                <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="Domainedexpertise" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner Domaine dexpertise'"
+              [settings]="dropdownSettings"
+              [data]="Domaine_dexpertise"
+              (onSelect)="onItemSelect1($event)"
+              (onDeSelect)="onItemDeSelect1($event)"
+              (onSelectAll)="onSelectAll1($event)"
+              (onDeSelectAll)="onDeSelectAll1()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+    </div>
+}
+
+
+ @if(step===2){
+     <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+                    Veuillez indiquer les certifications clés recherchées          </h4>
+        </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="Certifications" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner Certifications clés'"
+              [settings]="dropdownSettings"
+              [data]="Certifications_cles"
+              (onSelect)="onItemSelect2($event)"
+              (onDeSelect)="onItemDeSelect2($event)"
+              (onSelectAll)="onSelectAll2($event)"
+              (onDeSelectAll)="onDeSelectAll2()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+</div>
+ }
+
+
+  @if(step===3){
+ <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+Veuillez indiquer la ou les formations principales</h4>
+        </div>
+
+             <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="Formationprincipale" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner Formation principale'"
+              [settings]="dropdownSettings"
+              [data]="Formation_principale"
+              (onSelect)="onItemSelect3($event)"
+              (onDeSelect)="onItemDeSelect3($event)"
+              (onSelectAll)="onSelectAll3($event)"
+              (onDeSelectAll)="onDeSelectAll3()"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          </div>
+        }
+
+
+ @if(step===4){
+           <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+               Veuillez indiquer le nombre d’années d’expérience professionnelle
+            </h4>
+        </div>
+
+
+
+            <div style="display: flex; align-items: center; justify-content: center;">
+  <div class="col-8">
+
+<ng-multiselect-dropdown
+  [placeholder]="'Sélectionner le nombre d’années d’expérience'"
+  [data]="Annees_dexperience"
+  [(ngModel)]="selectedItem"
+  [settings]="SelectSettings">
+</ng-multiselect-dropdown>
+
+ 
+  </div>
+</div>
+
+</div>
+ }
+
+
+
+<!-- Loader -->
+<div *ngIf="loading" class="d-flex justify-content-center my-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Chargement...</span>
+  </div>
+</div>
+
+  @if(step===5){
+
+<div *ngIf="!loading"> 
+  <div class="section-title text-center mb-5">
+    <h4 class="fw-semibold mx-auto mb-0 text-uppercase">Top 3 experts les plus compatibles</h4>
+  </div>
+
+  <div class="row justify-content-center">
+ @for(expert of topExpert ; track expert){
+    <div class="col-xl-4 col-md-6">
+     
+      <div class="card shadow-sm p-4 border rounded-4 position-relative bg-light">
+
+        <!-- Expert Header -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+<h5 class="card-title fw-bold text-primary mb-0">{{ expert['Nom_et_prénom'] }}</h5>
+          <span class="badge bg-success fs-6 px-3 py-2 rounded-pill">Score: {{ expert.Score | number:'1.2-2' }}/1</span>
+        </div>
+
+        <!-- Info List -->
+        <ul class="list-unstyled mb-4">
+          <li class="mb-2">
+            <i class="fa-solid fa-phone me-2 text-secondary"></i>
+            <strong>Téléphone:</strong> {{ expert['Téléphone'] }}
+          </li>
+          <li class="mb-2">
+            <i class="fa-solid fa-envelope me-2 text-secondary"></i>
+            <strong>Email:</strong> {{expert.Email}}
+          </li>
+          <li class="mb-2">
+            <i class="fa-solid fa-certificate me-2 text-secondary"></i>
+            <strong>Certification:</strong> {{expert['Certifications_clés']}}
+          </li>
+          <li class="mb-2">
+            <i class="fa-solid fa-graduation-cap me-2 text-secondary"></i>
+            <strong>Formation:</strong> {{expert.Formation_principale}}
+          </li>
+          <li class="mb-2">
+            <i class="fa-solid fa-calendar-check me-2 text-secondary"></i>
+            <strong>Année d’expérience:</strong> {{expert['Années_dexpérience']}}
+          </li>
+          <li class="mb-2">
+            <i class="fa-solid fa-briefcase me-2 text-secondary"></i>
+            <strong>Domaine d’expertise:</strong> {{expert.Domaine_dexpertise}}
+          </li>
+        </ul>
+
+        <!-- Footer -->
+        <div class="text-end">
+          <a [href]="service.APIUrl + '/Expert/cv/' + expert.cv" target="_blank" class="btn btn-primary btn-sm px-4">
+            <i class="fa-solid fa-arrow-right me-1"></i> View CV
+          </a>
+
+          <a  class="btn btn-success  btn-sm px-4">
+            <i class="fa-solid fa-arrow-right me-1"></i> Envoyer le contrat
+          </a>
+        </div>
+
+      </div>
+      
+    </div>
+}
+  </div>
+</div>
+ }
+
+
+
+ <div style='display: flex; align-items: center; justify-content: space-evenly; margin-top: 50px;'>
+ 
+  @if(step>1){
+    <a class="default-btn" (click)="back()">Retour</a>
+    }
+     @if(step<4){
+  <a  class="default-btn" (click)="next()" >Suivant</a>
+  }
+  @if(step===4){
+    <a  class="default-btn" (click)="getFullData()">Submit</a>
+  }
+</div>
+       
+        </div>
+    </div>
+ 
+
+

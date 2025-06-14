@@ -1,0 +1,91 @@
+<app-navbar />
+
+<app-page-banner />
+
+<div class="pb-120 border-bottom"></div>
+
+<!-- Course Details -->
+<div class="course-details-area bg-f3f3f3 ptb-120">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-lg-4 col-md-12">
+        <div class="course-details-sidebar">
+          <div class="course-list">
+            <h3 class="fw-semibold">Experts</h3>
+            <ul class="p-0 m-0 list-unstyled">
+              <li>
+                <a  class="fw-medium active d-block">
+Ajouter un expert                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-lg-20 col-md">
+        <div class="course-details-desc">
+          <!-- Expert Form -->
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h4 class="mb-4 fw-bold text-primary">Chercheurs</h4>
+           <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle text-center">
+      <thead class="table-success">
+        <tr>
+          <th>Nom et prénom</th>
+          <th>Fonction</th>
+          <th>spécialité</th>
+          <th>Mail</th>
+          <th>téléphone</th>
+          <th>Laboratoire de recherche</th>
+
+          <th>Action</th>
+        </tr>
+      </thead>
+              @for(i of ChercheurList | paginate: { id: 'pagination2', itemsPerPage: 6, currentPage: p2 } ;track i){
+
+      <tbody>
+        <!-- Example row -->
+        <tr>
+          <td>{{i.Nom_prenom}}</td>
+          <td>{{i.fonction}}</td>
+          <td>{{i.specialite}}</td>
+          <td>{{i.Mail}}</td>
+          <td>{{i.telephone}}</td>
+          <td>{{i.Laboratoire_de_recherche}}</td>
+
+          <td>
+              <a style="cursor: pointer;"  (click)=" updateData(i.id)" title="Modifier">
+              <i class="fa-solid fa-pen-to-square me-2 text-primary"></i>
+            </a>
+            <a style="cursor: pointer;"  (click)="DeleteData(i.id)"  title="Supprimer">
+              <i class="fa-solid fa-trash me-2 text-danger"></i>
+            </a>
+         
+          </td>
+        </tr>
+        <!-- Add more rows dynamically if needed -->
+      </tbody>
+       }
+    </table>
+   <pagination-controls
+                (pageChange)="p2 = $event"
+                previousLabel="Précédent"
+                id="pagination2"
+                nextLabel="Suivant"
+                screenReaderPaginationLabel="Pagination"
+                screenReaderPageLabel="page"
+                screenReaderCurrentLabel="page actuelle">
+              </pagination-controls>
+
+
+  </div>
+          </div>
+          <!-- End Expert Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Course Details -->
+
+<app-back-to-top />

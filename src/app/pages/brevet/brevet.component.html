@@ -1,0 +1,44 @@
+<app-navbar />
+
+<app-page-banner />
+
+
+<!-- Default -->
+<div
+    class="feedback-area ptb-120 position-relative z-1"
+    [ngClass]="{'d-none': router.url === '/index-3'}"
+>
+    <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+
+
+
+      <div> 
+        <div class="section-title text-center">
+            <h4 class="fw-semibold mx-auto mb-0 text-uppercase">
+            Veuillez choisir le brevet souhaité
+            </h4>
+        </div>
+       
+
+                <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-8">
+              <ng-multiselect-dropdown
+              [(ngModel)]="brevet" 
+              [ngModelOptions]="{standalone: true}"
+              [placeholder]="'Sélectionner brevet'"
+              [settings]="dropdownSignleSettings"
+              [data]="listBrevet"
+              (onSelect)="onItemSelect($event)"
+              (onDeSelect)="onItemDeSelect($event)"
+            >
+            </ng-multiselect-dropdown>
+            </div>
+          </div>
+    </div>
+
+
+        </div>
+    </div>
+ 
+
+

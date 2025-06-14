@@ -1,0 +1,71 @@
+
+<div class="body">
+<form [formGroup]="authForm">
+  <div *ngIf="step === 1">
+    <div class="question">Veuillez décrire précisément votre besoin ou problématique</div>
+    <div class="textarea-wrapper">
+      <textarea class="custom-textarea" formControlName="besoin" placeholder="Write your message here..."></textarea>
+    </div>
+  </div>
+
+  <div *ngIf="step === 2">
+    <div class="question">Précisez la solution envisagée</div>
+    <div class="textarea-wrapper">
+      <textarea class="custom-textarea" formControlName="solution" placeholder="Write your message here..."></textarea>
+    </div>
+  </div>
+
+  <div *ngIf="step === 3">
+    <div class="question">Décrivez la priorité principale liée à votre problématique</div>
+    <div class="textarea-wrapper">
+      <textarea class="custom-textarea" formControlName="priorite" placeholder="Write your message here..."></textarea>
+    </div>
+  </div>
+
+  <div *ngIf="step === 4" class="form-container">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nom de votre entreprise</label>
+        <input type="text" formControlName="companyName" placeholder="Entrez le nom de votre entreprise" />
+      </div>
+
+      <div class="form-group">
+        <label>Numéro de téléphone</label>
+        <input type="text" formControlName="tel" placeholder="Entrez votre numéro de téléphone" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Adresse e-mail</label>
+      <input type="email" formControlName="email" placeholder="Entrez votre adresse e-mail" />
+    </div>
+
+    <div class="form-group">
+      <label>Mot de passe</label>
+      <input type="password" formControlName="password" placeholder="Créer un mot de passe" />
+        @if(authForm.get('password')?.touched && authForm.get('password')?.invalid){
+              <div
+                class="text-danger small mt-1 err"
+              >
+                Mot de passe invalide (min 8 caractères, 1 lettre, 1 chiffre, 1 spécial).
+              </div>
+            }
+    </div>
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+  <button class="submit-btn" [disabled]="authForm.invalid" (click)="signUp()">Créer votre compte</button>
+  <button class="submit-btn-c" *ngIf="step === 4" (click)="BackStep()">Retour</button>
+</div>
+
+
+</div>
+ 
+
+<div style="display: flex; align-items: center; justify-content: center; margin-top: 25px;">
+  <button class="continue-btn" *ngIf="step != 1 && step < 4" (click)="BackStep()" style="margin-right: 50px !important;">Retour</button>
+  <button class="continue-btn" *ngIf="step < 4" (click)="nextStep()">Continuer</button>
+</div>
+
+
+</form>
+</div>

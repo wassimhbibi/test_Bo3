@@ -1,0 +1,103 @@
+<app-navbar />
+
+<app-page-banner />
+
+<div class="pb-120 border-bottom"></div>
+
+<!-- Course Details -->
+<div class="course-details-area bg-f3f3f3 ptb-120">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12">
+        <div class="course-details-sidebar">
+          <div class="course-list">
+            <h3 class="fw-semibold">Brevets</h3>
+            <ul class="p-0 m-0 list-unstyled">
+              <li>
+                <a  class="fw-medium active d-block">
+                  Ajouter un Brevet 
+                
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <div class="course-details-desc">
+          <!-- Expert Form -->
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h4 class="mb-4 fw-bold text-primary">Ajouter un brevet</h4>
+            <form [formGroup]="authForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Numéro brevet</label>
+                  <input type="text" formControlName="Numero" class="form-control custom-input" placeholder="Entrez le numero" />
+                          @if(authForm.get('Numero')?.touched && authForm.get('Numero')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Titre</label>
+                  <input type="text" formControlName="Titre" class="form-control custom-input" placeholder="Entrez le Titre" />
+                     @if(authForm.get('Titre')?.touched && authForm.get('Titre')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Année</label>
+                  <input type="text" formControlName="Annee" class="form-control custom-input" placeholder="Entrez l'année " />
+                     @if(authForm.get('Annee')?.touched && authForm.get('Annee')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Type</label>
+                  <input type="text" formControlName="Type" class="form-control custom-input" placeholder="Entrez le Type" />
+                     @if(authForm.get('Type')?.touched && authForm.get('Type')?.invalid){
+              <div
+              
+                class="text-danger small mt-1 err"
+              >
+                champ requise
+              </div>
+            }
+                </div>
+
+              
+
+                <div class="col-12">
+<button type="submit" class="submit-btn" (click)="brevet?.ID ? update() : addBrevet()" [disabled]="authForm.invalid">Ajouter</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <!-- End Expert Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Course Details -->
+
+<app-back-to-top />

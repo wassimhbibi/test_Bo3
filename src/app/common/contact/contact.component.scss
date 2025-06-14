@@ -1,0 +1,261 @@
+  .body {
+      font-family: sans-serif;
+      background: #fff;
+      padding: 2rem;
+    }
+
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .option-card {
+      display: flex;
+      align-items: center;
+      border: 2px solid #e5e7eb; /* default gray */
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+    }
+
+    /* Blue border + glow when radio selected */
+    .option-card:has(input[type="radio"]:checked) {
+      border-color: #4f46e5;
+      box-shadow: 0 0 8px #4f46e5aa;
+    }
+
+    .option-card input[type="radio"] {
+      display: none;
+    }
+
+    .option-card .icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
+      padding: 6px;
+      background-color: #f3f4f6;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .option-card .text {
+      flex: 1;
+    }
+
+    .option-card .title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+      transition: color 0.2s, font-weight 0.2s;
+    }
+
+    .option-card .subtitle {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .option-card .custom-radio {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      background: #fff;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    /* Checked styles */
+    .option-card input[type="radio"]:checked ~ .icon {
+      background-color: #ede9fe;
+    }
+
+    .option-card input[type="radio"]:checked ~ .text {
+      color: #1e1b4b;
+    }
+
+    .option-card input[type="radio"]:checked ~ .custom-radio {
+      border-color: #4f46e5;
+      background: radial-gradient(circle at center, #4f46e5 50%, transparent 51%);
+      box-shadow: 0 0 0 2px #4f46e5;
+    }
+
+    .option-card input[type="radio"]:checked ~ .text .title {
+      font-weight: 700;
+    }
+
+    /* Disable pointer events on inner elements when checked */
+    .option-card input[type="radio"]:checked ~ .icon,
+    .option-card input[type="radio"]:checked ~ .text,
+    .option-card input[type="radio"]:checked ~ .custom-radio {
+      pointer-events: none;
+    }
+
+    /* Textarea styles */
+    .custom-textarea {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      font-family: inherit;
+      font-size: 16px;
+      color: #111827;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+      outline: none;
+      font-weight: 500;
+    }
+
+    /* Blue border + glow on focus */
+    .custom-textarea:focus {
+      border-color: #8adc1e;
+      box-shadow: 0 0 8px #8adc1e;
+    }
+
+    /* For consistency, wrap textarea in a div like option-card for same margin */
+    .textarea-wrapper {
+      max-width: 500px;
+      margin: 20px auto 0 auto;
+    }
+
+    .continue-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-weight: bold;
+      color: black;
+      background:#A7FF37;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      
+         &:hover {
+        color: white;
+        background-color: #586CEC;
+    }
+  }
+ 
+
+    .question {
+      font-size: 24px;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #9cf32a;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.25rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox label {
+  font-size: 0.875rem;
+}
+
+.checkbox a {
+  color: #6c63ff;
+  text-decoration: underline;
+}
+
+.submit-btn {
+  width: 70%;
+  padding: 1rem;
+        color: black;
+      background:#A7FF37;
+      
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+     &:hover {
+        color: white;
+        background-color: #586CEC;}
+}
+
+.submit-btn-c{
+width: 30%;
+  padding: 1rem;
+        color: black;
+      background:#A7FF37;
+      
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+     &:hover {
+        color: white;
+        background-color: #586CEC;}
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.err{
+    font-size: 13px;
+}
+
+.continue-btn {
+  margin: 0 !important; 
+}
